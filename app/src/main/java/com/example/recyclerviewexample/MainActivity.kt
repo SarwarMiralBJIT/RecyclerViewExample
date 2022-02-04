@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val customAdapter = CustomAdapter(taskList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         recyclerView.adapter = customAdapter
 
         val url = "https://api.npoint.io/154f32b1a6eea7ef6372"
