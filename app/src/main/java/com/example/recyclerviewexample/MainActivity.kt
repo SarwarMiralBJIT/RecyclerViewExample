@@ -20,18 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val customAdapter = CustomAdapter(taskList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = customAdapter
-
-        parseData()
-    }
-
-    private fun parseData(){
-
-        Log.i("Dhukse", "Dhukse")
 
         val url = "https://api.npoint.io/154f32b1a6eea7ef6372"
 
@@ -54,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                    val task = Task(title,time, firstTask, secondTask)
                    taskList.add(task)
                }
+                customAdapter.notifyDataSetChanged()
 
             }catch (e: JSONException){
                 Log.e("ParseErr", e.toString())
