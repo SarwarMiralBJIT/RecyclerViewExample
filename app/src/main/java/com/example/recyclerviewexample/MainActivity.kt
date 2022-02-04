@@ -3,24 +3,33 @@ package com.example.recyclerviewexample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.example.recyclerviewexample.Model.Task
+import com.example.recyclerviewexample.adapter.CustomAdapter
 import org.json.JSONException
 
 class MainActivity : AppCompatActivity() {
+
+    var taskList = ArrayList<Task>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val customAdapter = CustomAdapter(taskList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = customAdapter
+
         parseData()
     }
 
     private fun parseData(){
-
-        var taskList = ArrayList<Task>()
 
         Log.i("Dhukse", "Dhukse")
 
