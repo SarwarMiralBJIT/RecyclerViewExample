@@ -6,9 +6,11 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.example.recyclerviewexample.Model.Task
 import org.json.JSONException
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun parseData(){
+
+        var taskList = ArrayList<Task>()
+
         Log.i("Dhukse", "Dhukse")
 
         val url = "https://api.npoint.io/154f32b1a6eea7ef6372"
@@ -36,6 +41,9 @@ class MainActivity : AppCompatActivity() {
                    Log.i("First Task", firstTask)
                    val secondTask = todoArr.getString(1)
                    Log.i("Second Task", secondTask)
+
+                   val task = Task(title,time, firstTask, secondTask)
+                   taskList.add(task)
                }
 
             }catch (e: JSONException){
