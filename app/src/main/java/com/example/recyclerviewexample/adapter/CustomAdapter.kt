@@ -18,8 +18,10 @@ class CustomAdapter (private val taskList:ArrayList<Task>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = taskList[position]
 
-        holder.taskTitle.setText(task.title)
-        holder.date.setText(task.date)
+        holder.taskTitle.text = task.title
+        holder.date.text = task.date
+        holder.firstTask.text = task.firstTask
+        holder.secondTask.text = task.SecondTask
 
     }
 
@@ -30,6 +32,8 @@ class CustomAdapter (private val taskList:ArrayList<Task>): RecyclerView.Adapter
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView){
         val taskTitle:TextView = itemView.findViewById<TextView>(R.id.taskTitle)
         val date:TextView = itemView.findViewById<TextView>(R.id.date)
+        val firstTask:TextView = itemView.findViewById<TextView>(R.id.firstTask)
+        val secondTask:TextView = itemView.findViewById<TextView>(R.id.secondTask)
     }
 
 }

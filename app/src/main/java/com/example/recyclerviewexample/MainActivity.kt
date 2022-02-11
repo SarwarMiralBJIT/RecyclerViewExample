@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val customAdapter = CustomAdapter(taskList)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = customAdapter
 
         val url = "https://api.npoint.io/154f32b1a6eea7ef6372"
 
-        val request = JsonArrayRequest(Request.Method.GET, url, null, Response.Listener {
+        val request = JsonArrayRequest(Request.Method.GET, url, null, {
                 response ->
             try {
                for(i in 0 until response.length()){
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             }catch (e: JSONException){
                 Log.e("ParseErr", e.toString())
             }
-        }, Response.ErrorListener {
+        }, {
                 error ->
             Log.e("ResponseErr", error.toString())
         })
